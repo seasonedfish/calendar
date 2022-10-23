@@ -18,11 +18,9 @@ class SqlHelper {
      * Gets the result from a query as a 2D array
      */
     function get_query_result(string $query, string $types, ...$params) {
-        global $mysqli;
-
-        $statement = $mysqli->prepare($query);
+        $statement = $this->mysqli->prepare($query);
         if(!$statement){
-            printf("Query prep failed: %s\n", $mysqli->error);
+            printf("Query prep failed: %s\n", $this->mysqli->error);
             exit;
         }
         $statement->bind_param($types, ...$params);
@@ -37,11 +35,9 @@ class SqlHelper {
      * Executes a query
      */
     function execute_query(string $query, string $types, ...$params) {
-        global $mysqli;
-
-        $statement = $mysqli->prepare($query);
+        $statement = $this->mysqli->prepare($query);
         if(!$statement){
-            printf("Query prep failed: %s\n", $mysqli->error);
+            printf("Query prep failed: %s\n", $this->mysqli->error);
             exit;
         }
         $statement->bind_param($types, ...$params);
