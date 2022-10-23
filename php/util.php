@@ -1,6 +1,6 @@
 <?php
 /**
- * Class with helper methods for SQL operations
+ * Class with helper methods for SQL operations.
  */
 class SqlHelper {
     private mysqli $mysqli;
@@ -49,3 +49,11 @@ class SqlHelper {
         $statement->close();
     }
 }
+
+function send_data_as_json($data) {
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+    exit();
+}
+
+send_data_as_json(array("hello", "world"));

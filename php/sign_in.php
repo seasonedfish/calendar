@@ -3,6 +3,6 @@
  * Signs a user in.
  */
 
-require_once "sql.php";
+require_once "util.php";
 
 $sql_helper = new SqlHelper();
