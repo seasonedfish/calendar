@@ -51,5 +51,3 @@ function send_data_as_json($data) {
     echo json_encode($data);
     exit();
 }
-
-send_data_as_json(array("hello", "world"));
