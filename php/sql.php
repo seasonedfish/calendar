@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class with helper methods for SQL operations
+ */
 class SqlHelper {
     private mysqli $mysqli;
 
@@ -12,7 +15,7 @@ class SqlHelper {
     }
 
     /**
-     * Gets a result from a query
+     * Gets the result from a query as a 2D array
      */
     function get_query_result(string $query, string $types, ...$params) {
         global $mysqli;
