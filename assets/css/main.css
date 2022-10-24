@@ -1,0 +1,13 @@
+html {
+   font-family: sans-serif;
+}
+
+.weekdays, .day-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
