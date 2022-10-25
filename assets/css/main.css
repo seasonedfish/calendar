@@ -1,5 +1,6 @@
 :root {
-    --light-grey: #d3d3d3;
+    --light-bg: #d1d3de;
+    --light-bg2: #a3a7bd;
    font-family: sans-serif;
 }
 
@@ -11,6 +12,12 @@
     margin: 0;
     padding: 0;
     text-align: left;
+
+    background-color: var(--light-bg);
+}
+
+#weekdays {
+    background-color: var(--light-bg2);
 }
 
 #day-grid {
@@ -20,7 +27,9 @@
 #day-grid li {
     /* https://stackoverflow.com/a/12693151 */
     --thickness: 1px;
-    outline: var(--thickness) solid var(--light-grey);
-    margin-top: var(--thickness);
-    margin-left: var(--thickness);
+    border: var(--thickness) solid var(--light-bg);
+    margin-top: calc(-1 * var(--thickness));
+    margin-left: calc(-1 * var(--thickness));
+
+    background-color: white;
 }
