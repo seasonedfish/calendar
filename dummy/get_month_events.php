@@ -7,16 +7,18 @@ require_once "../php/util.php";
 
 $events = array(
     array(
-        "eventId" => "70",
+        "event_id" => "70",
         "title" => "My first dummy event",
         "datetime" => "2023-02-01T13:15:00",
-        "location" => NULL
+        "location" => NULL,
+        "username" => "fisher",
     ),
     array(
-        "eventId" => "71",
+        "event_id" => "71",
         "title" => "My other dummy event",
         "datetime" => "2023-02-07T14:15:00",
-        "location" => NULL
+        "location" => NULL,
+        "username" => "fisher",
     )
 );
 
