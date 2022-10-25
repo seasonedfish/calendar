@@ -20,3 +20,7 @@
 .day-grid li {
     border: 1px solid var(--light-grey);
 }
+
+.day-grid li:first-of-type {
+    grid-column-start: 3;
+}
