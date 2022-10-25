@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
-    <script type="module" src="js/header.js"></script>
-
     <!-- https://css-tricks.com/snippets/css/css-grid-starter-layouts/ -->
-    <div class="calendar">
-        <ul class="weekdays">
+    <div id="calendar">
+        <ul id="weekdays">
             <li>SUN</li>
             <li>MON</li>
             <li>TUE</li>
@@ -22,7 +22,7 @@
             <li>SAT</li>
         </ul>
 
-        <ol class="day-grid">
+        <ol id="day-grid">
             <li>1</li>
             <li>2</li>
             <li>3</li>
@@ -56,4 +56,13 @@
         </ol>
     </div>
 </body>
+
+<template id="calendar-day">
+    <li>
+        <div id="day-number">
+
+        </div>
+    </li>
+</template>
+
 </html>
