@@ -2,36 +2,12 @@
  * The client-side code for the calendar main screen.
  */
 function updateHeader() {
-    const header = document.createElement("header");
+    const monthAndYear = document.getElementById("month-and-year");
 
-    const left = document.createElement("div");
-    const h1 = document.createElement("h1");
     const monthString = viewDate.toLocaleString("default", {month: "long"});
-    const year = viewDate.getFullYear()
-    h1.innerHTML = `${monthString} ${year}`;
-    left.appendChild(h1);
+    const year = viewDate.getFullYear();
 
-    const right = document.createElement("div");
-    const nav = document.createElement("nav");
-    const ul = document.createElement("ul");
-    const anchors = {"sign-in": "Sign in", "create-event": "Create Event"};
-    for (let id in anchors) {
-        const li = document.createElement("li");
-        let content = anchors[id];
-        const a = document.createElement("a");
-        a.setAttribute("id", id);
-        a.setAttribute("href", "javascript:void(0)");
-        a.innerHTML = content;
-        li.appendChild(a);
-        ul.appendChild(li);
-    }
-    nav.appendChild(ul);
-    right.appendChild(nav);
-
-    header.appendChild(left);
-    header.appendChild(right);
-
-    document.body.prepend(header);
+    monthAndYear.innerHTML = `${monthString} ${year}`;
 }
 
 function getIncrementedDate(date) {
