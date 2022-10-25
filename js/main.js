@@ -40,12 +40,12 @@ function updateCalendar(date) {
     const dayGrid = document.querySelector("#day-grid");
     dayGrid.replaceChildren(...days);
 
-    let sheet = document.styleSheets[1];
-    let rule = sheet.cssRules[0];
-    rule.style["grid-column-start"] = Math.floor(Math.random() * 7);
+    const dayOffset = (new Date(date.getFullYear(), date.getMonth(), 1)).getDay() + 1
+    let style = document.getElementById("day-offset");
+    style.innerHTML = `#day-grid li:first-of-type { grid-column-start: ${dayOffset}; }`;
 }
 
-let viewDate = new Date("2022-02-02");
+let viewDate = new Date();
 updateCalendar(viewDate);
 
 const b = document.createElement("button");
