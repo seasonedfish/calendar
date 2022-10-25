@@ -1,6 +1,18 @@
 /**
  * The client-side code for the calendar main screen.
  */
+function updateHeader() {
+    const header = document.createElement("header");
+
+    const h1 = document.createElement("h1");
+    const monthString = viewDate.toLocaleString("default", {month: "long"});
+    const year = viewDate.getFullYear()
+    h1.innerHTML = `${monthString} ${year}`;
+
+    header.appendChild(h1);
+
+    document.body.prepend(header);
+}
 
 function getIncrementedDate(date) {
     return new Date(
@@ -40,15 +52,11 @@ function updateCalendar() {
     const dayGrid = document.querySelector("#day-grid");
     dayGrid.replaceChildren(...days);
 
-    const dayOffset = Math.floor(Math.random() * 7);
+    const dayOffset = (new Date(viewDate.getFullYear(), viewDate.getMonth(), 1)).getDay() + 1
     let style = document.getElementById("day-offset");
     style.innerHTML = `#day-grid li:first-of-type { grid-column-start: ${dayOffset}; }`;
 }
 
 let viewDate = new Date();
-updateCalendar();
-
-const b = document.createElement("button");
-b.innerHTML = "Refresh";
-b.addEventListener("click", updateCalendar);
-document.body.appendChild(b);
+document.addEventListener("DOMContentLoaded", updateCalendar);
+document.addEventListener("DOMContentLoaded", updateHeader)
