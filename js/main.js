@@ -12,12 +12,21 @@ function updateHeader() {
     left.appendChild(h1);
 
     const right = document.createElement("div");
-    const signIn = document.createElement("a");
-    signIn.innerHTML = "Sign in"
-    right.appendChild(signIn);
-    const creatEvent = document.createElement("a");
-    creatEvent.innerHTML = "Create Event";
-    right.appendChild(creatEvent);
+    const nav = document.createElement("nav");
+    const ul = document.createElement("ul");
+    const anchors = {"sign-in": "Sign in", "create-event": "Create Event"};
+    for (let id in anchors) {
+        const li = document.createElement("li");
+        let content = anchors[id];
+        const a = document.createElement("a");
+        a.setAttribute("id", id);
+        a.setAttribute("href", "javascript:void(0)");
+        a.innerHTML = content;
+        li.appendChild(a);
+        ul.appendChild(li);
+    }
+    nav.appendChild(ul);
+    right.appendChild(nav);
 
     header.appendChild(left);
     header.appendChild(right);
