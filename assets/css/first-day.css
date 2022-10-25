@@ -1,7 +1,0 @@
-/*
-Must be empty besides this one style!
-The content is automatically replaced by main.js.
-*/
-#day-grid li:first-of-type {
-    grid-column-start: 2;
-}

@@ -1,0 +1,3 @@
+#day-grid li:first-of-type {
+    grid-column-start: 1;
+}
