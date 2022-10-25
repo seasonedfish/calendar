@@ -18,5 +18,9 @@
 }
 
 #day-grid li {
-    border: 1px solid var(--light-grey);
+    /* https://stackoverflow.com/a/12693151 */
+    --thickness: 1px;
+    outline: var(--thickness) solid var(--light-grey);
+    margin-top: var(--thickness);
+    margin-left: var(--thickness);
 }
