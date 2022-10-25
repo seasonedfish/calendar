@@ -4,6 +4,11 @@
    font-family: sans-serif;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 #weekdays, #day-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);

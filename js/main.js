@@ -4,12 +4,23 @@
 function updateHeader() {
     const header = document.createElement("header");
 
+    const left = document.createElement("div");
     const h1 = document.createElement("h1");
     const monthString = viewDate.toLocaleString("default", {month: "long"});
     const year = viewDate.getFullYear()
     h1.innerHTML = `${monthString} ${year}`;
+    left.appendChild(h1);
 
-    header.appendChild(h1);
+    const right = document.createElement("div");
+    const signIn = document.createElement("a");
+    signIn.innerHTML = "Sign in"
+    right.appendChild(signIn);
+    const creatEvent = document.createElement("a");
+    creatEvent.innerHTML = "Create Event";
+    right.appendChild(creatEvent);
+
+    header.appendChild(left);
+    header.appendChild(right);
 
     document.body.prepend(header);
 }
