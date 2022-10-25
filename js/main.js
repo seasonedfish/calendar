@@ -31,7 +31,7 @@ function updateCalendar(date) {
     for (let d = 1; d <= daysInMonth; d++) {
         const clone = template.content.cloneNode(true);
 
-        const dayNumber = clone.querySelector("#day-number");
+        const dayNumber = clone.querySelectorAll(".day-number")[0];
         dayNumber.textContent = d.toString();
 
         days.push(clone);
