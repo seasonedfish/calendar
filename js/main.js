@@ -23,8 +23,8 @@ function getDaysInMonth(date) {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }
 
-function updateCalendar(date) {
-    let daysInMonth = getDaysInMonth(date);
+function updateCalendar() {
+    let daysInMonth = getDaysInMonth(viewDate);
 
     let days = [];
     const template = document.querySelector("#calendar-day");
@@ -40,13 +40,13 @@ function updateCalendar(date) {
     const dayGrid = document.querySelector("#day-grid");
     dayGrid.replaceChildren(...days);
 
-    const dayOffset = (new Date(date.getFullYear(), date.getMonth(), 1)).getDay() + 1
+    const dayOffset = Math.floor(Math.random() * 7);
     let style = document.getElementById("day-offset");
     style.innerHTML = `#day-grid li:first-of-type { grid-column-start: ${dayOffset}; }`;
 }
 
 let viewDate = new Date();
-updateCalendar(viewDate);
+updateCalendar();
 
 const b = document.createElement("button");
 b.innerHTML = "Refresh";

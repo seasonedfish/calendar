@@ -11,10 +11,15 @@
     #day-grid li:first-of-type {
         grid-column-start: 2;
     }
-    html {
-        background-color: firebrick;
-    }
     </style>
+
+    <template id="calendar-day">
+        <li>
+            <div class="day-number">
+
+            </div>
+        </li>
+    </template>
 
     <script type="module" src="js/main.js"></script>
 </head>
@@ -32,13 +37,6 @@
         </ul>
 
         <ol id="day-grid">
-            <template id="calendar-day">
-                <li>
-                    <div class="day-number">
-
-                    </div>
-                </li>
-            </template>
         </ol>
     </div>
 </body>
