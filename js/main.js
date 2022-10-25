@@ -10,13 +10,13 @@ function updateHeader() {
     monthAndYear.innerHTML = `${monthString} ${year}`;
 }
 
-function nextMonth() {
-    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
+function previousMonth() {
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
     updateAll();
 }
 
-function previousMonth() {
-    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
+function nextMonth() {
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
     updateAll();
 }
 
@@ -54,5 +54,5 @@ function updateAll() {
 
 let viewDate = new Date();
 document.addEventListener("DOMContentLoaded", updateAll);
-document.getElementById("next-month").addEventListener("click", nextMonth);
 document.getElementById("previous-month").addEventListener("click", previousMonth);
+document.getElementById("next-month").addEventListener("click", nextMonth);
