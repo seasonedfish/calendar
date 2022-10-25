@@ -10,20 +10,14 @@ function updateHeader() {
     monthAndYear.innerHTML = `${monthString} ${year}`;
 }
 
-function getIncrementedDate(date) {
-    return new Date(
-        date.getFullYear(),
-        date.getMonth() + 1,
-        1
-    );
+function nextMonth() {
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
+    updateAll();
 }
 
-function getDecrementedDate(date) {
-    return new Date(
-        date.getFullYear(),
-        date.getMonth() - 1,
-        1
-    );
+function previousMonth() {
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
+    updateAll();
 }
 
 function getDaysInMonth(date) {
@@ -53,6 +47,12 @@ function updateCalendar() {
     style.innerHTML = `#day-grid li:first-of-type { grid-column-start: ${dayOffset}; }`;
 }
 
+function updateAll() {
+    updateHeader();
+    updateCalendar();
+}
+
 let viewDate = new Date();
-document.addEventListener("DOMContentLoaded", updateCalendar);
-document.addEventListener("DOMContentLoaded", updateHeader)
+document.addEventListener("DOMContentLoaded", updateAll);
+document.getElementById("next-month").addEventListener("click", nextMonth);
+document.getElementById("previous-month").addEventListener("click", previousMonth);
