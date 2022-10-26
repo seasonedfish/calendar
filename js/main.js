@@ -133,9 +133,9 @@ function updateCalendar() {
 }
 
 function updateAll() {
-    applyUserTheme();
     updateHeader();
     updateCalendar();
+    applyUserTheme();
 }
 
 function showSignIn() {
