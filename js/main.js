@@ -209,7 +209,6 @@ async function getEvent(eventId) {
 
 async function showEditEvent(evt, eventId) {
     const event = await getEvent(eventId);
-    console.log(event);
 
     let editEvent = document.getElementById("edit-event-popup");
     document.getElementById("edit-event-event-id").value = event["event_id"];
@@ -235,12 +234,13 @@ function editEvent(event) {
         "datetime": entries["edit-event-datetime"],
         "location": entries["edit-event-location"],
     }
+    console.log(json);
 
     fetch(`${BACKEND_PREFIX}/edit_event.php`, {
         method: "POST",
         body: JSON.stringify(json),
         headers: {"content-type": "application/json"}
-    }).then(() => console.log("Edited event"));
+    }).then(res => {console.log("Edited event")});
 
     hideCreateEvent();
     updateAll();
