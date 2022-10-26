@@ -53,7 +53,8 @@
             <ol id="day-grid">
             </ol>
         </div>
-        <div id="signin-popup">
+
+        <div id="signin-popup" class="popup">
             <h3>Sign in:</h3>
             <p>
                 <label for="username">Username: </label>
@@ -71,6 +72,33 @@
                 <button id="create-account-button">Create</button>
             </p>
             <button id="cancel-signin" type="button">Cancel</button>
+        </div>
+
+        <div id="create-event-popup" class="popup">
+            <h2>
+                Create Event
+            </h2>
+            <form id="create-event-form">
+                <div>
+                    <label for="create-event-name">Event name: </label>
+                    <input type="text" id="create-event-name" name="create-event-name" required>
+                </div>
+
+                <div>
+                    <label for="create-event-datetime">Date and time: </label>
+                    <input type="datetime-local" id="create-event-datetime" name="create-event-datetime" required>
+                </div>
+
+                <div>
+                    <label for="create-event-location">Location: </label>
+                    <input type="text" id="create-event-location" name="create-event-location" required>
+                </div>
+
+                <div>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+            <button id="cancel-create-event" type="button">Cancel</button>
         </div>
     </body>
 </html>

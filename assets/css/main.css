@@ -14,7 +14,7 @@ header {
     justify-content: space-between;
 }
 
-#signin-popup {
+.popup {
     position: fixed;
     display: none;
     flex-direction: column;
