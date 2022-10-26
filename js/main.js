@@ -247,6 +247,10 @@ async function showEditEvent(evt, eventId) {
         // Clear this div if it's been populated before
         document.getElementById("google-maps").replaceChildren();
     }
+    let downloadIcs = document.createElement("a");
+    downloadIcs.setAttribute("href", makeIcsFile(event));
+    downloadIcs.innerText = "Download iCalendar file";
+    document.getElementById("download-ics").replaceChildren(downloadIcs);
 
     document.getElementById("delete-event").addEventListener("click", (evt) => deleteEvent(evt, event["event_id"]))
 
