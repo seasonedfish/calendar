@@ -1,10 +1,7 @@
 <?php
     /**
-     * Signs a user in.
+     * Logs user out
      */
-
-    header("Content-Type: application/json");
-    require_once "util.php";
 
     session_destroy();
 ?>
