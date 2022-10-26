@@ -212,6 +212,7 @@ async function showEditEvent(evt, eventId) {
     console.log(event);
 
     let editEvent = document.getElementById("edit-event-popup");
+    document.getElementById("edit-event-event-id").value = event["event_id"];
     document.getElementById("edit-event-title").value = event["title"];
     document.getElementById("edit-event-datetime").value = event["datetime"];
     document.getElementById("edit-event-location").value = event["location"];
@@ -221,6 +222,28 @@ async function showEditEvent(evt, eventId) {
 
 function hideEditEvent() {
     document.getElementById("edit-event-popup").style.display = "none";
+}
+
+function editEvent(event) {
+    event.preventDefault();
+
+    const formData = new FormData(document.getElementById("edit-event-form"));
+    const entries = Object.fromEntries(formData);
+    const json = {
+        "event-id": entries["edit-event"],
+        "title": entries["edit-event-name"],
+        "datetime": entries["edit-event-datetime"],
+        "location": entries["edit-event-location"],
+    }
+
+    fetch(`${BACKEND_PREFIX}/edit_event.php`, {
+        method: "POST",
+        body: JSON.stringify(json),
+        headers: {"content-type": "application/json"}
+    }).then(() => console.log("Edited event"));
+
+    hideCreateEvent();
+    updateAll();
 }
 
 let viewDate = new Date();
@@ -242,3 +265,4 @@ document.getElementById("create-event-submit").addEventListener("click", createE
 document.getElementById("cancel-create-event").addEventListener("click", hideCreateEvent);
 
 document.getElementById("cancel-edit-event").addEventListener("click", hideEditEvent);
+document.getElementById("edit-event-form").addEventListener("submit", editEvent);
