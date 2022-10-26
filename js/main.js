@@ -280,7 +280,8 @@ function toggleDarkMode() {
     const root = document.querySelector(':root');
     const links = document.getElementsByTagName('a');
 
-    if (dark) {
+
+    if (localStorage.getItem("isDarkMode") === "true") {
         root.style.setProperty('--bg', '#FFFFFF');
         root.style.setProperty('--text', '#212121');
         root.style.setProperty('--calendar-bg', '#d1d3de');
@@ -288,6 +289,7 @@ function toggleDarkMode() {
         for (let i = 0; i < links.length; i++) {
             links[i].style.color = "blue";
         }
+        localStorage.setItem("isDarkMode", "false");
     } else {
         root.style.setProperty('--bg', '#2f3740');
         root.style.setProperty('--text', '#FFFFFF');
@@ -296,12 +298,11 @@ function toggleDarkMode() {
         for (let i = 0; i < links.length; i++) {
             links[i].style.color = "#e3794f";
         }
+        localStorage.setItem("isDarkMode", "true");
     }
-    dark = !dark;
 }
 
 let viewDate = new Date();
-let dark = false;
 
 document.addEventListener("DOMContentLoaded", updateAll);
 
