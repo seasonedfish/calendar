@@ -38,3 +38,11 @@ header {
 
     background-color: white;
 }
+
+.events-list {
+    padding: 0;
+}
+
+.events-list li{
+    list-style-type: none;
+}
