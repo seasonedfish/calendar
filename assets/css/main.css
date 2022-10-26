@@ -25,11 +25,11 @@ header {
     justify-content: center;
     align-items: center;
     border-style: solid;
-    border-width: 3px;
-    border-radius: 15px;
-    border-color: #717cb9;
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: var(--text);
     z-index: 1;
-    background-color: white;
+    background-color: var(--bg);
 }
 
 #weekdays, #day-grid {
