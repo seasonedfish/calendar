@@ -55,7 +55,12 @@ async function fetchEvents() {
     // Use en-CA to format it as ISO 8601.
     // https://stackoverflow.com/a/63490548
     const dateString = viewDate.toLocaleDateString("en-CA");
-    const response = await fetch(`${BACKEND_PREFIX}/get_month_events.php?date=${dateString}`, {});
+    const data = {"date": dateString};
+    const response = await fetch(`${BACKEND_PREFIX}/get_month_events.php`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'content-type': 'application/json' }
+    });
     return await response.json();
 }
 
@@ -203,7 +208,12 @@ async function signOut() {
 }
 
 async function getEvent(eventId) {
-    const response = await fetch(`php/get_event.php?event_id=${eventId}`);
+    const data = {"event_id": eventId};
+    const response = await fetch(`php/get_event.php`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'content-type': 'application/json' }
+    });
     return response.json();
 }
 
@@ -234,15 +244,14 @@ function editEvent(event) {
         "datetime": entries["edit-event-datetime"],
         "location": entries["edit-event-location"],
     }
-    console.log(json);
 
     fetch(`${BACKEND_PREFIX}/edit_event.php`, {
         method: "POST",
         body: JSON.stringify(json),
         headers: {"content-type": "application/json"}
-    }).then(res => {console.log("Edited event")});
+    });
 
-    hideCreateEvent();
+    hideEditEvent();
     updateAll();
 }
 

@@ -5,9 +5,12 @@
     header("Content-Type: application/json");
     require_once "util.php";
 
-    if (isset($_GET['date'])) {
+    $json_str = file_get_contents('php://input');
+    $json_obj = json_decode($json_str, true);
+
+    if (isset($json_obj['date'])) {
         session_start();
-        $date = $_GET['date'];
+        $date = $json_obj['date'];
         $username = $_SESSION['username'];
         
         $sql_helper = new SqlHelper();

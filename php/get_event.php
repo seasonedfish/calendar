@@ -6,10 +6,13 @@
 require_once "util.php";
 header("Content-Type: application/json");
 
-if (isset($_GET['event_id'])) {
+$json_str = file_get_contents('php://input');
+$json_obj = json_decode($json_str, true);
+
+if (isset($json_obj['event_id'])) {
     session_start();
     if (isset($_SESSION['username'])) {
-        $event_id = $_GET['event_id'];
+        $event_id = $json_obj['event_id'];
         $username = $_SESSION['username'];
 
         $sql_helper = new SqlHelper();
