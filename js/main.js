@@ -66,11 +66,10 @@ function updateCalendarWithEvents(events) {
     let days = getArrayOfEmptyDays(daysInMonth);
 
     for (const event of events) {
-        console.log(event);
         let eventDate = new Date(event["datetime"]);
-        let dayNumber = eventDate.getDay();
+        let dateNumber = eventDate.getDate();
 
-        let day = days[dayNumber - 1];
+        let day = days[dateNumber - 1];
         let eventsList = day.querySelectorAll(".events-list")[0];
 
         let li = document.createElement("li");
