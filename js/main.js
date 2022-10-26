@@ -195,6 +195,6 @@ document.getElementById("create-account-submit").addEventListener("click", newUs
 document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
 
 document.getElementById("create-event").addEventListener("click", showCreateEvent);
-document.getElementById("create-event-form").addEventListener("formdata", createEvent);
+document.getElementById("create-event-form").addEventListener("submit", createEvent);
 document.getElementById("create-event-submit").addEventListener("click", createEvent);
 document.getElementById("cancel-create-event").addEventListener("click", hideCreateEvent);
