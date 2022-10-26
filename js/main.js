@@ -33,16 +33,6 @@ function nextMonth() {
 }
 
 /**
- * Helper method that returns the number of days in the month.
- * @param date a Date object
- * @returns {number}
- */
-function getDaysInMonth(date) {
-    // https://stackoverflow.com/a/1184359
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-}
-
-/**
  * Fetches the events for the current month from the server.
  * @returns {Promise<any>}
  */
@@ -54,7 +44,14 @@ async function fetchEvents() {
     return await response.json();
 }
 
-function getArrayOfEmptyDays(daysInMonth) {
+/**
+ * Helper method to return an array of date notes that only have the calendar date.
+ *
+ * @returns {*[]}
+ */
+function getArrayOfEmptyDays() {
+    const daysInMonth = (new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 0)).getDate();
+
     let days = [];
     const template = document.querySelector("#calendar-day");
     for (let i = 0; i < daysInMonth; i++) {
@@ -69,8 +66,7 @@ function getArrayOfEmptyDays(daysInMonth) {
 }
 
 function updateCalendarWithEvents(events) {
-    let daysInMonth = getDaysInMonth(viewDate);
-    let days = getArrayOfEmptyDays(daysInMonth);
+    let days = getArrayOfEmptyDays();
 
     for (const event of events) {
         let eventDate = new Date(event["datetime"]);
