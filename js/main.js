@@ -226,6 +226,10 @@ async function getEvent(eventId) {
     return response.json();
 }
 
+function getGoogleMapsUrl(location) {
+    return `https://www.google.com/maps?q=${encodeURIComponent(location)}`
+}
+
 async function showEditEvent(evt, eventId) {
     const event = await getEvent(eventId);
 
@@ -234,6 +238,13 @@ async function showEditEvent(evt, eventId) {
     document.getElementById("edit-event-title").value = event["title"];
     document.getElementById("edit-event-datetime").value = event["datetime"];
     document.getElementById("edit-event-location").value = event["location"];
+    if (event["location"]) {
+        const a = document.createElement("a");
+        a.setAttribute("href", getGoogleMapsUrl(event["location"]));
+        a.innerText = "Open in Google Maps"
+
+        document.getElementById("google-maps").replaceChildren(a);
+    }
 
     document.getElementById("delete-event").addEventListener("click", (evt) => deleteEvent(evt, event["event_id"]))
 
@@ -294,6 +305,7 @@ function applyUserTheme() {
         root.style.setProperty('--anchor', '#e3794f');
     }
 }
+
 function toggleDarkMode() {
     if (localStorage.getItem("isDarkMode") === "true") {
         localStorage.setItem("isDarkMode", "false");
