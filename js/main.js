@@ -25,19 +25,18 @@ function updateHeader() {
     monthAndYear.innerHTML = `${monthString} ${year}`;
 
     fetch(`${BACKEND_PREFIX}/check_user.php`, {})
-    .then(result => result.json())
-    .then(result => {
-        if (result['user'] != "") {
-            document.getElementById("sign-in-li").style.display = "none";
-            document.getElementById("create-event-li").style.display = "list-item";
-            document.getElementById("sign-out-li").style.display = "list-item";
-        }
-        else {
-            document.getElementById("sign-in-li").style.display = "list-item";
-            document.getElementById("create-event-li").style.display = "none";
-            document.getElementById("sign-out-li").style.display = "none";
-        }
-    });
+        .then(result => result.json())
+        .then(result => {
+            if (result['user'] != "") {
+                document.getElementById("sign-in-li").style.display = "none";
+                document.getElementById("create-event-li").style.display = "list-item";
+                document.getElementById("sign-out-li").style.display = "list-item";
+            } else {
+                document.getElementById("sign-in-li").style.display = "list-item";
+                document.getElementById("create-event-li").style.display = "none";
+                document.getElementById("sign-out-li").style.display = "none";
+            }
+        });
 }
 
 /**
@@ -123,6 +122,7 @@ function updateCalendarWithEvents(events) {
     style.innerHTML = `#day-grid li:first-of-type { grid-column-start: ${dayOffset}; }`;
 
 }
+
 /**
  * Updates the calendar grid.
  */
@@ -148,21 +148,20 @@ function hideSignIn() {
 function signIn() {
     const username = document.getElementById("username").value;
 
-    const data = { 'username': username };
+    const data = {'username': username};
 
     fetch("php/sign_in.php", {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: JSON_HEADERS
-        })
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: JSON_HEADERS
+    })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 console.log("Successfully logged in");
                 hideSignIn();
                 updateAll();
-            }
-            else {
+            } else {
                 alert("Error");
             }
         })
@@ -172,7 +171,7 @@ function signIn() {
 function newUser() {
     const username = document.getElementById("new_username").value;
 
-    const data = { 'username': username };
+    const data = {'username': username};
 
     fetch("php/create_account.php", {
         method: 'POST',
@@ -286,18 +285,15 @@ function toggleDarkMode() {
         root.style.setProperty('--text', '#212121');
         root.style.setProperty('--calendar-bg', '#d1d3de');
         root.style.setProperty('--calendar-bg2', '#a3a7bd');
-        for(var i=0;i<links.length;i++)
-        {
+        for (let i = 0; i < links.length; i++) {
             links[i].style.color = "blue";
         }
-    }
-    else {
+    } else {
         root.style.setProperty('--bg', '#2f3740');
         root.style.setProperty('--text', '#FFFFFF');
         root.style.setProperty('--calendar-bg', '#262C33');
         root.style.setProperty('--calendar-bg2', '#496282');
-        for(var i=0;i<links.length;i++)
-        {
+        for (let i = 0; i < links.length; i++) {
             links[i].style.color = "#e3794f";
         }
     }
