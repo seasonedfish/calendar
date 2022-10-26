@@ -4,7 +4,6 @@
  */
 
 require_once "util.php";
-header("Content-Type: application/json");
 
 if (isset($_GET['event_id'])) {
     session_start();
@@ -18,7 +17,7 @@ if (isset($_GET['event_id'])) {
 
         if ($username == $result['username']) {
             $query = "DELETE FROM events WHERE event_id=?";
-            $sql_helper->execute_query($query, "i", $event_id)[0];
+            $sql_helper->execute_query($query, "i", $event_id);
         }
     }
     exit;
