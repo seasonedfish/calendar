@@ -167,10 +167,10 @@ function newUser() {
     const data = { 'username': username };
 
     fetch("php/create_account.php", {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: JSON_HEADERS
-        });
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: JSON_HEADERS
+    }).then(() => console.log("Created new user"));
     hideSignIn();
 }
 
@@ -197,7 +197,7 @@ function createEvent(event) {
         method: "POST",
         body: JSON.stringify(json),
         headers: JSON_HEADERS
-    });
+    }).then(() => console.log("Created event"));
 
     hideCreateEvent();
     updateAll();
@@ -252,7 +252,7 @@ function editEvent(event) {
         method: "POST",
         body: JSON.stringify(json),
         headers: JSON_HEADERS
-    });
+    }).then(() => console.log("Edited event"));
 
     hideEditEvent();
     updateAll();
