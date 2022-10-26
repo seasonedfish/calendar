@@ -159,6 +159,10 @@ function hideCreateEvent() {
     document.getElementById("create-event-popup").style.display = "none";
 }
 
+function createEvent() {
+    
+}
+
 let viewDate = new Date();
 
 document.addEventListener("DOMContentLoaded", updateAll);
@@ -167,9 +171,10 @@ document.getElementById("previous-month").addEventListener("click", previousMont
 document.getElementById("next-month").addEventListener("click", nextMonth);
 
 document.getElementById("sign-in").addEventListener("click", showSignIn);
-document.getElementById("sign-in-button").addEventListener("click", signIn);
-document.getElementById("create-account-button").addEventListener("click", newUser);
+document.getElementById("sign-in-submit").addEventListener("click", signIn);
+document.getElementById("create-account-submit").addEventListener("click", newUser);
 document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
 
 document.getElementById("create-event").addEventListener("click", showCreateEvent);
+document.getElementById("create-event-submit").addEventListener("click", createEvent);
 document.getElementById("cancel-create-event").addEventListener("click", hideCreateEvent);
