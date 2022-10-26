@@ -151,7 +151,7 @@ function signIn() {
 
     const data = {'username': username};
 
-    fetch("php/sign_in.php", {
+    fetch(`${BACKEND_PREFIX}/sign_in.php`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: JSON_HEADERS
@@ -174,7 +174,7 @@ function newUser() {
 
     const data = {'username': username};
 
-    fetch("php/create_account.php", {
+    fetch(`${BACKEND_PREFIX}/create_account.php`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: JSON_HEADERS
@@ -212,13 +212,13 @@ function createEvent(event) {
 }
 
 async function signOut() {
-    await fetch("php/sign_out.php", {});
+    await fetch(`${BACKEND_PREFIX}/sign_out.php`, {});
     updateAll();
 }
 
 async function getEvent(eventId) {
     const data = {"event_id": eventId};
-    const response = await fetch(`php/get_event.php`, {
+    const response = await fetch(`${BACKEND_PREFIX}/get_event.php`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: JSON_HEADERS
