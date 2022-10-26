@@ -19,6 +19,6 @@
         $query = "SELECT * FROM `events` WHERE MONTH(datetime)=MONTH(?) AND username=?";
         $result = $sql_helper->get_query_result($query, "ss", $date, $username);
 
-        send_data_as_json($result);
+        send_data_as_json(htmlentities($result));
     }
 ?>

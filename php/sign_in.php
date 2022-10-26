@@ -19,9 +19,11 @@
 
         session_start();
         $_SESSION['username'] = $username;
+        $_SESSION['token'] = bin2hex(random_bytes(32));
         
         echo json_encode(array(
-            "success" => true
+            "success" => true,
+            "token" => $_SESSION['token']
         ));
         exit;
     }
