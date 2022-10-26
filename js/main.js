@@ -5,6 +5,14 @@
 const BACKEND_PREFIX = "php";
 const JSON_HEADERS = {"content-type": "application/json"};
 
+function postDataAsJson(data, phpFile) {
+    return fetch(`${BACKEND_PREFIX}/${phpFile}`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: JSON_HEADERS
+    })
+}
+
 /**
  * Updates the month and year in the header. Also changes which buttons show up depending on if the user is signed in.
  */
@@ -286,7 +294,7 @@ function toggleDarkMode() {
     else {
         root.style.setProperty('--bg', '#2f3740');
         root.style.setProperty('--text', '#FFFFFF');
-        root.style.setProperty('--calendar-bg', '#d1d3de');
+        root.style.setProperty('--calendar-bg', '#262C33');
         root.style.setProperty('--calendar-bg2', '#496282');
         for(var i=0;i<links.length;i++)
         {
