@@ -42,8 +42,15 @@ function getDaysInMonth(date) {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }
 
+/**
+ * Fetches the events for the current month from the server.
+ * @returns {Promise<any>}
+ */
 async function fetchEvents() {
-    const response = await fetch(`${BACKEND_PREFIX}/get_month_events.php`, {});
+    // Use en-CA to format it as ISO 8601.
+    // https://stackoverflow.com/a/63490548
+    const dateString = viewDate.toLocaleDateString("en-CA");
+    const response = await fetch(`${BACKEND_PREFIX}/get_month_events.php?date=${dateString}`, {});
     return await response.json();
 }
 
