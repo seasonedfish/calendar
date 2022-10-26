@@ -10,6 +10,8 @@ $json_str = file_get_contents('php://input');
 $json_obj = json_decode($json_str, true);
 
 if (isset($json_obj['event_id'])) {
+    ini_set("session.cookie_httponly", 1);
+
     session_start();
     if (isset($_SESSION['username'])) {
         $event_id = $json_obj['event_id'];

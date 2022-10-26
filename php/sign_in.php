@@ -15,6 +15,8 @@
     $result = $sql_helper->get_query_result($query, "s", $username);
     
     if (sizeof($result) > 0) {
+        ini_set("session.cookie_httponly", 1);
+
         session_start();
         $_SESSION['username'] = $username;
         

@@ -5,6 +5,8 @@
 
     header("Content-Type: application/json");
     require_once "util.php";
+    
+    ini_set("session.cookie_httponly", 1);
 
     session_start();
     $username = $_SESSION['username'];

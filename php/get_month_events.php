@@ -9,6 +9,8 @@
     $json_obj = json_decode($json_str, true);
 
     if (isset($json_obj['date'])) {
+        ini_set("session.cookie_httponly", 1);
+
         session_start();
         $date = $json_obj['date'];
         $username = $_SESSION['username'];
