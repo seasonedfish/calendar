@@ -144,11 +144,15 @@ function newUser() {
 }
 
 var viewDate = new Date();
+
 document.addEventListener("DOMContentLoaded", updateAll);
+
 document.getElementById("previous-month").addEventListener("click", previousMonth);
 document.getElementById("next-month").addEventListener("click", nextMonth);
+
 document.getElementById("sign-in").addEventListener("click", showSignIn);
-document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
-document.getElementById("create-event").addEventListener("click", nextMonth);
 document.getElementById("sign-in-button").addEventListener("click", signIn);
 document.getElementById("create-account-button").addEventListener("click", newUser);
+document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
+
+document.getElementById("create-event").addEventListener("click", nextMonth);
