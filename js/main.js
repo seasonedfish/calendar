@@ -317,6 +317,31 @@ function toggleDarkMode() {
     applyUserTheme();
 }
 
+function getIcsDt(date) {
+    return date.toISOString()
+        .replaceAll("-", "")
+        .replaceAll(":", "")
+        .slice(0, 15)
+        + "Z";
+}
+
+function makeIcsFile(event) {
+    const icsContents = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fisher and Harry/Calendar//NONSGML v1.0//EN
+BEGIN:VEVENT
+UID:${Date.now()}@${window.location.host}
+SUMMARY:${event["title"]}
+LOCATION:${event["location"]}
+DTSTART:${getIcsDt(new Date(event["datetime"]))}
+END:VEVENT
+END:VCALENDAR`;
+
+    const data = new File([icsContents], "event.ics", {type: "text/plain"});
+
+    return window.URL.createObjectURL(data);
+}
+
 let viewDate = new Date();
 
 document.addEventListener("DOMContentLoaded", updateAll);
