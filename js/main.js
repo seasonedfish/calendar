@@ -79,6 +79,7 @@ function updateCalendarWithEvents(events) {
         let a = document.createElement("a");
         a.setAttribute("href", "javascript:void(0)");
         a.textContent = `${eventDate.getHours()}:${eventDate.getMinutes()} ${event["title"]}`;
+        // Add parameter to handler https://stackoverflow.com/a/49015755
         a.addEventListener("click", (evt) => showEditEvent(evt, event["event_id"]));
         li.replaceChildren(a);
 
