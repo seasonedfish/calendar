@@ -6,6 +6,7 @@
     require_once "util.php";
 
     if (isset($_GET['date'])) {
+        session_start();
         $date = $_GET['date'];
         $username = $_SESSION['username'];
         
@@ -13,7 +14,6 @@
         $query = "SELECT * FROM `events` WHERE MONTH(datetime)=MONTH(?) AND username=?";
         $result = $sql_helper->get_query_result($query, "ss", $date, $username);
 
-        echo json_encode($result);
-        exit;
+        send_data_as_json($result);
     }
 ?>
