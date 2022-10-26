@@ -226,6 +226,8 @@ async function showEditEvent(evt, eventId) {
     document.getElementById("edit-event-datetime").value = event["datetime"];
     document.getElementById("edit-event-location").value = event["location"];
 
+    document.getElementById("delete-event").addEventListener("click", (evt) => deleteEvent(evt, event["event_id"]))
+
     editEvent.style.display = "flex";
 }
 
@@ -250,6 +252,17 @@ function editEvent(event) {
         body: JSON.stringify(json),
         headers: {"content-type": "application/json"}
     });
+
+    hideEditEvent();
+    updateAll();
+}
+
+async function deleteEvent(evt, eventId) {
+    await fetch(`${BACKEND_PREFIX}/delete_event.php"`, {
+        method: "POST",
+        body: JSON.stringify({"event_id": eventId}),
+        headers: {"content-type": "application/json"}
+    }).then(() => console.log("Deleted event"));
 
     hideEditEvent();
     updateAll();
