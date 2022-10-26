@@ -207,8 +207,9 @@ async function getEvent(eventId) {
     return response.json();
 }
 
-function showEditEvent(evt, eventId) {
-    const event = getEvent(eventId);
+async function showEditEvent(evt, eventId) {
+    const event = await getEvent(eventId);
+    console.log(event);
 
     let editEvent = document.getElementById("edit-event-popup");
     document.getElementById("edit-event-title").value = event["title"];
