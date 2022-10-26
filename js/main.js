@@ -269,7 +269,20 @@ async function deleteEvent(evt, eventId) {
     updateAll();
 }
 
+function toggleDarkMode() {
+    const root = document.querySelector(':root');
+
+    if (dark) {
+        r.style.setProperty('--bg', '#FFFFFF');
+    }
+    else {
+        r.style.setProperty('--bg', '#2f3740');
+    }
+    dark = !dark;
+}
+
 let viewDate = new Date();
+let dark = false;
 
 document.addEventListener("DOMContentLoaded", updateAll);
 
@@ -289,3 +302,5 @@ document.getElementById("cancel-create-event").addEventListener("click", hideCre
 
 document.getElementById("cancel-edit-event").addEventListener("click", hideEditEvent);
 document.getElementById("edit-event-form").addEventListener("submit", editEvent);
+
+document.getElementById("toggle-dark-mode").addEventListener("click", toggleDarkMode);
