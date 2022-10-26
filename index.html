@@ -101,5 +101,32 @@
             </form>
             <button id="cancel-create-event" type="button">Cancel</button>
         </div>
+
+        <div id="edit-event-popup" class="popup">
+            <h2>
+                Edit Event
+            </h2>
+            <form id="edit-event-form">
+                <div>
+                    <label for="edit-event-title">Edit title: </label>
+                    <input type="text" id="edit-event-title" name="edit-event-title" required>
+                </div>
+
+                <div>
+                    <label for="edit-event-datetime">Date and time: </label>
+                    <input type="datetime-local" id="edit-event-datetime" name="edit-event-datetime" required>
+                </div>
+
+                <div>
+                    <label for="edit-event-location">Location: </label>
+                    <input type="text" id="edit-event-location" name="edit-event-location" required>
+                </div>
+
+                <div>
+                    <input type="submit" id="edit-event-submit" value="Edit">
+                </div>
+            </form>
+            <button id="cancel-edit-event" type="button">Cancel</button>
+        </div>
     </body>
 </html>

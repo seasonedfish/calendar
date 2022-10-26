@@ -69,8 +69,8 @@ function updateCalendarWithEvents(events) {
     let days = getArrayOfEmptyDays();
 
     for (const event of events) {
-        let eventDate = new Date(event["datetime"]);
-        let dateNumber = eventDate.getDate();
+        const eventDate = new Date(event["datetime"]);
+        const dateNumber = eventDate.getDate();
 
         let day = days[dateNumber - 1];
         let eventsList = day.querySelectorAll(".events-list")[0];
@@ -79,6 +79,7 @@ function updateCalendarWithEvents(events) {
         let a = document.createElement("a");
         a.setAttribute("href", "javascript:void(0)");
         a.textContent = `${eventDate.getHours()}:${eventDate.getMinutes()} ${event["title"]}`;
+        a.addEventListener("click", (evt) => showEditEvent(evt, event["event_id"]));
         li.replaceChildren(a);
 
         eventsList.appendChild(li);
@@ -185,6 +186,26 @@ function signOut() {
     updateAll();
 }
 
+async function getEvent(eventId) {
+    const response = await fetch(`php/get_event.php?event_id=${eventId}`);
+    return response.json();
+}
+
+function showEditEvent(evt, eventId) {
+    const event = getEvent(eventId);
+
+    let editEvent = document.getElementById("edit-event-popup");
+    editEvent.getElementById("edit-event-title").value = event["title"];
+    editEvent.getElementById("edit-event-datetime").value = event["datetime"];
+    editEvent.getElementById("edit-event-location").value = event["location"];
+
+    editEvent.style.display = "flex";
+}
+
+function hideEditEvent() {
+    document.getElementById("create-event-popup").style.display = "none";
+}
+
 let viewDate = new Date();
 
 document.addEventListener("DOMContentLoaded", updateAll);
@@ -202,3 +223,5 @@ document.getElementById("create-event").addEventListener("click", showCreateEven
 document.getElementById("create-event-form").addEventListener("submit", createEvent);
 document.getElementById("create-event-submit").addEventListener("click", createEvent);
 document.getElementById("cancel-create-event").addEventListener("click", hideCreateEvent);
+
+document.getElementById("cancel-edit-event").addEventListener("click", hideEditEvent);
