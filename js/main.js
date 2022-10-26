@@ -242,8 +242,10 @@ async function showEditEvent(evt, eventId) {
         const a = document.createElement("a");
         a.setAttribute("href", getGoogleMapsUrl(event["location"]));
         a.innerText = "Open in Google Maps"
-
         document.getElementById("google-maps").replaceChildren(a);
+    } else {
+        // Clear this div if it's been populated before
+        document.getElementById("google-maps").replaceChildren();
     }
 
     document.getElementById("delete-event").addEventListener("click", (evt) => deleteEvent(evt, event["event_id"]))
