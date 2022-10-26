@@ -12,11 +12,16 @@
     $json_str = file_get_contents('php://input');
     $json_obj = json_decode($json_str, true);
 
+    $event_id = $json_obj['event_id'];
     $title = $json_obj['title'];
     $datetime = $json_obj['datetime'];
     $location = $json_obj['location'];
+    $event_user = $json_obj['username'];
 
-    $sql_helper = new SqlHelper();
-    $query = "insert into events (title, datetime, username, location) values (?, ?, ?, ?)";
-    $sql_helper->execute_query($query, "ssss", $title, $datetime, $username, $location);
+    if ($event_user == $username) {
+        $sql_helper = new SqlHelper();
+        $query = "UPDATE events SET title = ?, datetime = ?, location = ? WHERE event_id = ?";
+        $sql_helper->execute_query($query, "sssi", $title, $datetime, $location, $event_id);
+    }
+    exit;
 ?>

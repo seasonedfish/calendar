@@ -19,4 +19,5 @@
     $sql_helper = new SqlHelper();
     $query = "insert into events (title, datetime, username, location) values (?, ?, ?, ?)";
     $sql_helper->execute_query($query, "ssss", $title, $datetime, $username, $location);
+    exit;
 ?>
