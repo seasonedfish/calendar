@@ -279,25 +279,19 @@ function deleteEvent(evt, eventId) {
 
 function applyUserTheme() {
     const root = document.querySelector(':root');
-    const links = document.getElementsByTagName('a');
-
 
     if (localStorage.getItem("isDarkMode") === "false") {
         root.style.setProperty('--bg', '#FFFFFF');
         root.style.setProperty('--text', '#212121');
         root.style.setProperty('--calendar-bg', '#d1d3de');
         root.style.setProperty('--calendar-bg2', '#a3a7bd');
-        for (let i = 0; i < links.length; i++) {
-            links[i].style.color = "blue";
-        }
+        root.style.setProperty('--anchor', 'blue');
     } else {
         root.style.setProperty('--bg', '#2f3740');
         root.style.setProperty('--text', '#FFFFFF');
         root.style.setProperty('--calendar-bg', '#262C33');
         root.style.setProperty('--calendar-bg2', '#496282');
-        for (let i = 0; i < links.length; i++) {
-            links[i].style.color = "#e3794f";
-        }
+        root.style.setProperty('--anchor', '#e3794f');
     }
 }
 function toggleDarkMode() {

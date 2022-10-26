@@ -3,10 +3,15 @@
     --text: #212121;
     --calendar-bg: #d1d3de;
     --calendar-bg2: #a3a7bd;
+    --anchor: blue;
 
     font-family: sans-serif;
     background-color: var(--bg);
     color: var(--text);
+}
+
+a {
+    color: var(--anchor);
 }
 
 header {
