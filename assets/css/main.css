@@ -1,7 +1,12 @@
 :root {
-    --light-bg: #d1d3de;
-    --light-bg2: #a3a7bd;
-   font-family: sans-serif;
+    --bg: #FFFFFF;
+    --text: #212121;
+    --calendar-bg: #d1d3de;
+    --calendar-bg2: #a3a7bd;
+
+    font-family: sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 header {
@@ -18,11 +23,11 @@ header {
     padding: 0;
     text-align: left;
 
-    background-color: var(--light-bg);
+    background-color: var(--calendar-bg);
 }
 
 #weekdays {
-    background-color: var(--light-bg2);
+    background-color: var(--calendar-bg2);
 }
 
 #day-grid {
@@ -32,17 +37,17 @@ header {
 #day-grid li {
     /* https://stackoverflow.com/a/12693151 */
     --thickness: 1px;
-    border: var(--thickness) solid var(--light-bg);
+    border: var(--thickness) solid var(--calendar-bg);
     margin-top: calc(-1 * var(--thickness));
     margin-left: calc(-1 * var(--thickness));
 
-    background-color: white;
+    background-color: var(--bg);
 }
 
 .events-list {
     padding: 0;
 }
 
-.events-list li{
+.events-list li {
     list-style-type: none;
 }
