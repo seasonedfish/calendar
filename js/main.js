@@ -165,20 +165,23 @@ function createEvent(event) {
     const formData = new FormData(document.getElementById("create-event-form"));
     const entries = Object.fromEntries(formData);
     const json = {
-        "name": entries["create-event-name"],
+        "title": entries["create-event-name"],
         "datetime": entries["create-event-datetime"],
         "location": entries["create-event-location"]
     }
+    console.log(json);
 
     fetch(`${BACKEND_PREFIX}/create_event.php`, {
         method: "POST",
         body: JSON.stringify(json),
         headers: { "content-type": "application/json" }
     })
-        .then(function() {console.log("Created event")})
-        .catch(error => console.error("Error:", error))
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error("Error:", error));
 
     hideCreateEvent();
+    updateAll();
 }
 
 function signOut() {
