@@ -5,7 +5,7 @@
 const BACKEND_PREFIX = "php"
 
 /**
- * Updates the month and year in the header.
+ * Updates the month and year in the header. Also changes which buttons show up depending on if the user is signed in.
  */
 function updateHeader() {
     const monthAndYear = document.getElementById("month-and-year");
@@ -14,6 +14,21 @@ function updateHeader() {
     const year = viewDate.getFullYear();
 
     monthAndYear.innerHTML = `${monthString} ${year}`;
+
+    fetch(`${BACKEND_PREFIX}/check_user.php`, {})
+    .then(result => result.json())
+    .then(result => {
+        if (result['user'] != "") {
+            document.getElementById("sign-in-li").style.display = "none";
+            document.getElementById("create-event-li").style.display = "list-item";
+            document.getElementById("sign-out-li").style.display = "list-item";
+        }
+        else {
+            document.getElementById("sign-in-li").style.display = "list-item";
+            document.getElementById("create-event-li").style.display = "none";
+            document.getElementById("sign-out-li").style.display = "none";
+        }
+    });
 }
 
 /**
