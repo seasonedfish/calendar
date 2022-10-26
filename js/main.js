@@ -2,7 +2,8 @@
  * The client-side code for the calendar main screen.
  */
 
-const BACKEND_PREFIX = "php"
+const BACKEND_PREFIX = "php";
+const JSON_HEADERS = {"content-type": "application/json"};
 
 /**
  * Updates the month and year in the header. Also changes which buttons show up depending on if the user is signed in.
@@ -59,7 +60,7 @@ async function fetchEvents() {
     const response = await fetch(`${BACKEND_PREFIX}/get_month_events.php`, {
         method: 'POST',
         body: JSON.stringify(data),
-        headers: { 'content-type': 'application/json' }
+        headers: JSON_HEADERS
     });
     return await response.json();
 }
@@ -144,7 +145,7 @@ function signIn() {
     fetch("php/sign_in.php", {
             method: 'POST',
             body: JSON.stringify(data),
-            headers: { 'content-type': 'application/json' }
+            headers: JSON_HEADERS
         })
         .then(response => response.json())
         .then(data => {
@@ -168,7 +169,7 @@ function newUser() {
     fetch("php/create_account.php", {
             method: 'POST',
             body: JSON.stringify(data),
-            headers: { 'content-type': 'application/json' }
+            headers: JSON_HEADERS
         });
     hideSignIn();
 }
@@ -195,7 +196,7 @@ function createEvent(event) {
     fetch(`${BACKEND_PREFIX}/create_event.php`, {
         method: "POST",
         body: JSON.stringify(json),
-        headers: { "content-type": "application/json" }
+        headers: JSON_HEADERS
     });
 
     hideCreateEvent();
@@ -212,7 +213,7 @@ async function getEvent(eventId) {
     const response = await fetch(`php/get_event.php`, {
         method: 'POST',
         body: JSON.stringify(data),
-        headers: { 'content-type': 'application/json' }
+        headers: JSON_HEADERS
     });
     return response.json();
 }
@@ -250,7 +251,7 @@ function editEvent(event) {
     fetch(`${BACKEND_PREFIX}/edit_event.php`, {
         method: "POST",
         body: JSON.stringify(json),
-        headers: {"content-type": "application/json"}
+        headers: JSON_HEADERS
     });
 
     hideEditEvent();
@@ -261,7 +262,7 @@ async function deleteEvent(evt, eventId) {
     await fetch(`${BACKEND_PREFIX}/delete_event.php"`, {
         method: "POST",
         body: JSON.stringify({"event_id": eventId}),
-        headers: {"content-type": "application/json"}
+        headers: JSON_HEADERS
     }).then(() => console.log("Deleted event"));
 
     hideEditEvent();
