@@ -125,10 +125,17 @@ function signIn() {
             headers: { 'content-type': 'application/json' }
         })
         .then(response => response.json())
-        .then(data => console.log(data.success ? "You've been logged in!" : `Error`))
+        .then(data => {
+            if (data.success) {
+                console.log("Sucessfully logged in");
+                hideSignIn();
+                updateAll();
+            }
+            else {
+                alert("Error");
+            }
+        })
         .catch(err => console.error(err));
-    hideSignIn();
-    updateAll();
 }
 
 function newUser() {
