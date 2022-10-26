@@ -16,7 +16,7 @@ $events = array(
     array(
         "event_id" => "71",
         "title" => "My other dummy event",
-        "datetime" => "2022-10-31T14:15:00",
+        "datetime" => "2022-10-13T14:15:00",
         "location" => NULL,
         "username" => "fisher",
     )
