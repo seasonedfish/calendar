@@ -2,7 +2,7 @@
  * The client-side code for the calendar main screen.
  */
 
-const BACKEND_PREFIX = "dummy"
+const BACKEND_PREFIX = "php"
 
 /**
  * Updates the month and year in the header.
@@ -125,9 +125,10 @@ function signIn() {
             headers: { 'content-type': 'application/json' }
         })
         .then(response => response.json())
-        .then(data => alert(data.success ? "You've been logged in!" : `Error`))
+        .then(data => console.log(data.success ? "You've been logged in!" : `Error`))
         .catch(err => console.error(err));
     hideSignIn();
+    updateAll();
 }
 
 function newUser() {
@@ -151,7 +152,7 @@ function hideCreateEvent() {
     document.getElementById("create-event-popup").style.display = "none";
 }
 
-var viewDate = new Date();
+let viewDate = new Date();
 
 document.addEventListener("DOMContentLoaded", updateAll);
 
