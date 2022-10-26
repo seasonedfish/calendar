@@ -164,10 +164,15 @@ function createEvent(event) {
 
     const formData = new FormData(document.getElementById("create-event-form"));
     const entries = Object.fromEntries(formData);
+    const json = {
+        "name": entries["create-event-name"],
+        "datetime": entries["create-event-datetime"],
+        "location": entries["create-event-location"]
+    }
 
     fetch(`${BACKEND_PREFIX}/create_event.php`, {
         method: "POST",
-        body: JSON.stringify(entries),
+        body: JSON.stringify(json),
         headers: { "content-type": "application/json" }
     })
         .then(function() {console.log("Created event")})
