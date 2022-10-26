@@ -197,8 +197,8 @@ function createEvent(event) {
     updateAll();
 }
 
-function signOut() {
-    fetch("php/sign_out.php", {});
+async function signOut() {
+    await fetch("php/sign_out.php", {});
     updateAll();
 }
 
