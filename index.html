@@ -1,138 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calendar</title>
-        <link rel="stylesheet" href="assets/css/main.css">
-        <style rel="stylesheet" id="day-offset">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style rel="stylesheet" id="day-offset">
         #day-grid li:first-of-type {
             grid-column-start: 2;
         }
-        </style>
-        <template id="calendar-day">
-            <li>
-                <div class="day-number">
-                </div>
-                <ol class="events-list">
-                </ol>
-            </li>
-        </template>
-        <script type="module" src="js/main.js"></script>
-    </head>
-    <body>
-        <header>
-            <div>
-                <h1 id="month-and-year">October 2022</h1>
-                <a id="previous-month" href="javascript:void(0)">Previous month</a>
-                <a id="next-month" href="javascript:void(0)">Next month</a>
+    </style>
+    <template id="calendar-day">
+        <li>
+            <div class="day-number">
             </div>
-            <div>
-                <nav>
-                    <ul id="links">
-                        <li id="sign-in-li"><a id="sign-in" href="javascript:void(0)">Sign in</a></li>
-                        <li><a id="toggle-dark-mode" href="javascript:void(0)">Toggle dark mode</a></li>
-                        <li id="sign-out-li"><a id="sign-out" href="javascript:void(0)">Sign out</a></li>
-                        <li id="create-event-li"><a id="create-event" href="javascript:void(0)">Create event</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!-- https://css-tricks.com/snippets/css/css-grid-starter-layouts/ -->
-        <div id="calendar">
-            <ul id="weekdays">
-                <li>SUN</li>
-                <li>MON</li>
-                <li>TUE</li>
-                <li>WED</li>
-                <li>THU</li>
-                <li>FRI</li>
-                <li>SAT</li>
-            </ul>
-
-            <ol id="day-grid">
+            <ol class="events-list">
             </ol>
+        </li>
+    </template>
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1 id="month-and-year">October 2022</h1>
+            <a id="previous-month" href="javascript:void(0)">Previous month</a>
+            <a id="next-month" href="javascript:void(0)">Next month</a>
         </div>
-
-        <div id="signin-popup" class="popup">
-            <h3>Sign in:</h3>
-            <p>
-                <label for="username">Username: </label>
-                <input type="text" name="username" id="username">
-            </p>
-            <p>
-                <button id="sign-in-submit">Sign In</button>
-            </p>
-            <h3>Create Account:</h3>
-            <p>
-                <label for="new_username">New username: </label>
-                <input type="text" name="new_username" id="new_username">
-            </p>
-            <p>
-                <button id="create-account-submit">Create</button>
-            </p>
-            <button id="cancel-signin" type="button">Cancel</button>
+        <div>
+            <nav>
+                <ul id="links">
+                    <li id="sign-in-li"><a id="sign-in" href="javascript:void(0)">Sign in</a></li>
+                    <li><a id="toggle-dark-mode" href="javascript:void(0)">Toggle dark mode</a></li>
+                    <li id="sign-out-li"><a id="sign-out" href="javascript:void(0)">Sign out</a></li>
+                    <li id="create-event-li"><a id="create-event" href="javascript:void(0)">Create event</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
+    <!-- https://css-tricks.com/snippets/css/css-grid-starter-layouts/ -->
+    <div id="calendar">
+        <ul id="weekdays">
+            <li>SUN</li>
+            <li>MON</li>
+            <li>TUE</li>
+            <li>WED</li>
+            <li>THU</li>
+            <li>FRI</li>
+            <li>SAT</li>
+        </ul>
 
-        <div id="create-event-popup" class="popup">
-            <h2>
-                Create Event
-            </h2>
-            <form id="create-event-form">
-                <div>
-                    <label for="create-event-name">Event name: </label>
-                    <input type="text" id="create-event-name" name="create-event-name" required>
-                </div>
+        <ol id="day-grid">
+        </ol>
+    </div>
 
-                <div>
-                    <label for="create-event-datetime">Date and time: </label>
-                    <input type="datetime-local" id="create-event-datetime" name="create-event-datetime" required>
-                </div>
+    <div id="signin-popup" class="popup">
+        <h3>Sign in:</h3>
+        <p>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username">
+        </p>
+        <p>
+            <button id="sign-in-submit">Sign In</button>
+        </p>
+        <h3>Create Account:</h3>
+        <p>
+            <label for="new_username">New username: </label>
+            <input type="text" name="new_username" id="new_username">
+        </p>
+        <p>
+            <button id="create-account-submit">Create</button>
+        </p>
+        <button id="cancel-signin" type="button">Cancel</button>
+    </div>
 
-                <div>
-                    <label for="create-event-location">Location: </label>
-                    <input type="text" id="create-event-location" name="create-event-location">
-                </div>
+    <div id="create-event-popup" class="popup">
+        <h2>
+            Create Event
+        </h2>
+        <form id="create-event-form">
+            <div>
+                <label for="create-event-name">Event name: </label>
+                <input type="text" id="create-event-name" name="create-event-name" required>
+            </div>
 
-                <div>
-                    <input type="submit" id="create-event-submit" value="Create">
-                </div>
-            </form>
-            <button id="cancel-create-event" type="button">Cancel</button>
-        </div>
+            <div>
+                <label for="create-event-datetime">Date and time: </label>
+                <input type="datetime-local" id="create-event-datetime" name="create-event-datetime" required>
+            </div>
 
-        <div id="edit-event-popup" class="popup">
-            <h2>
-                Edit Event
-            </h2>
-            <form id="edit-event-form">
-                <input type="hidden" id="edit-event-event-id" name="edit-event-event-id">
+            <div>
+                <label for="create-event-location">Location: </label>
+                <input type="text" id="create-event-location" name="create-event-location">
+            </div>
 
-                <div>
-                    <label for="edit-event-title">Edit title: </label>
-                    <input type="text" id="edit-event-title" name="edit-event-title" required>
-                </div>
+            <div>
+                <input type="submit" id="create-event-submit" value="Create">
+            </div>
+        </form>
+        <button id="cancel-create-event" type="button">Cancel</button>
+    </div>
 
-                <div>
-                    <label for="edit-event-datetime">Date and time: </label>
-                    <input type="datetime-local" id="edit-event-datetime" name="edit-event-datetime" required>
-                </div>
+    <div id="edit-event-popup" class="popup">
+        <h2>
+            Edit Event
+        </h2>
+        <form id="edit-event-form">
+            <input type="hidden" id="edit-event-event-id" name="edit-event-event-id">
 
-                <div>
-                    <label for="edit-event-location">Location: </label>
-                    <input type="text" id="edit-event-location" name="edit-event-location">
-                </div>
+            <div>
+                <label for="edit-event-title">Edit title: </label>
+                <input type="text" id="edit-event-title" name="edit-event-title" required>
+            </div>
 
-                <div id="google-maps">
-                </div>
+            <div>
+                <label for="edit-event-datetime">Date and time: </label>
+                <input type="datetime-local" id="edit-event-datetime" name="edit-event-datetime" required>
+            </div>
 
-                <div>
-                    <input type="submit" id="edit-event-submit" value="Edit">
-                </div>
-            </form>
-            <button id="delete-event" type="button">Delete</button>
-            <button id="cancel-edit-event" type="button">Cancel</button>
-        </div>
-    </body>
+            <div>
+                <label for="edit-event-location">Location: </label>
+                <input type="text" id="edit-event-location" name="edit-event-location">
+            </div>
+
+            <div id="google-maps">
+            </div>
+
+            <div>
+                <input type="submit" id="edit-event-submit" value="Edit">
+            </div>
+        </form>
+        <button id="delete-event" type="button">Delete</button>
+        <button id="cancel-edit-event" type="button">Cancel</button>
+    </div>
+</body>
 </html>
