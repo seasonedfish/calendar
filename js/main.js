@@ -174,6 +174,11 @@ function createEvent(event) {
 
 }
 
+function signOut() {
+    fetch("php/sign_out.php", {});
+    updateAll();
+}
+
 let viewDate = new Date();
 
 document.addEventListener("DOMContentLoaded", updateAll);
@@ -183,6 +188,7 @@ document.getElementById("next-month").addEventListener("click", nextMonth);
 
 document.getElementById("sign-in").addEventListener("click", showSignIn);
 document.getElementById("sign-in-submit").addEventListener("click", signIn);
+document.getElementById("sign-out").addEventListener("click", signOut);
 document.getElementById("create-account-submit").addEventListener("click", newUser);
 document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
 
