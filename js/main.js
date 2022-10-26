@@ -350,10 +350,6 @@ END:VCALENDAR`;
     return window.URL.createObjectURL(data);
 }
 
-function setToken() {
-    
-}
-
 let viewDate = new Date();
 let token = null;
 
