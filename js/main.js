@@ -61,34 +61,26 @@ function getArrayOfEmptyDays(daysInMonth) {
     return days;
 }
 
-/**
- * Updates the calendar grid.
- */
-function updateCalendar() {
+function updateCalendarWithEvents(events) {
     let daysInMonth = getDaysInMonth(viewDate);
     let days = getArrayOfEmptyDays(daysInMonth);
 
-    fetchEvents()
-        .then(
-            events => {
-                for (const event of events) {
-                    let eventDate = new Date(event["datetime"]);
-                    let dayNumber = eventDate.getDay();
+    for (const event of events) {
+        console.log(event);
+        let eventDate = new Date(event["datetime"]);
+        let dayNumber = eventDate.getDay();
 
-                    let day = days[dayNumber - 1];
-                    let eventsList = day.querySelectorAll(".events-list")[0];
+        let day = days[dayNumber - 1];
+        let eventsList = day.querySelectorAll(".events-list")[0];
 
-                    let li = document.createElement("li");
-                    let a = document.createElement("a");
-                    a.setAttribute("href", "javascript:void(0)");
-                    a.textContent = `${eventDate.getHours()}:${eventDate.getMinutes()} ${event["title"]}`;
-                    li.replaceChildren(a);
+        let li = document.createElement("li");
+        let a = document.createElement("a");
+        a.setAttribute("href", "javascript:void(0)");
+        a.textContent = `${eventDate.getHours()}:${eventDate.getMinutes()} ${event["title"]}`;
+        li.replaceChildren(a);
 
-                    eventsList.appendChild(li);
-                }
-            }
-        )
-        .catch(error => console.error('Error:', error))
+        eventsList.appendChild(li);
+    }
 
     const dayGrid = document.querySelector("#day-grid");
     dayGrid.replaceChildren(...days);
@@ -96,6 +88,15 @@ function updateCalendar() {
     const dayOffset = (new Date(viewDate.getFullYear(), viewDate.getMonth(), 1)).getDay() + 1
     let style = document.getElementById("day-offset");
     style.innerHTML = `#day-grid li:first-of-type { grid-column-start: ${dayOffset}; }`;
+
+}
+/**
+ * Updates the calendar grid.
+ */
+function updateCalendar() {
+    fetchEvents()
+        .then(updateCalendarWithEvents)
+        .catch(error => console.error('Error:', error))
 }
 
 function updateAll() {
