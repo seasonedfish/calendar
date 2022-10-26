@@ -143,6 +143,14 @@ function newUser() {
     hideSignIn();
 }
 
+function showCreateEvent() {
+    document.getElementById("create-event-popup").style.display = "flex";
+}
+
+function hideCreateEvent() {
+    document.getElementById("create-event-popup").style.display = "none";
+}
+
 var viewDate = new Date();
 
 document.addEventListener("DOMContentLoaded", updateAll);
@@ -155,4 +163,5 @@ document.getElementById("sign-in-button").addEventListener("click", signIn);
 document.getElementById("create-account-button").addEventListener("click", newUser);
 document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
 
-document.getElementById("create-event").addEventListener("click", nextMonth);
+document.getElementById("create-event").addEventListener("click", showCreateEvent);
+document.getElementById("cancel-create-event").addEventListener("click", hideCreateEvent);
