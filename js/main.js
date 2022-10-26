@@ -161,10 +161,11 @@ function hideCreateEvent() {
 
 function createEvent(event) {
     event.preventDefault(); // prevent refreshing https://stackoverflow.com/a/19454346
-    const formData = new FormData(event.target);
+
+    const formData = new FormData(document.getElementById("create-event-form"));
     const entries = Object.fromEntries(formData);
 
-    fetch(`${BACKEND_PREFIX}/create_event`, {
+    fetch(`${BACKEND_PREFIX}/create_event.php`, {
         method: "POST",
         body: JSON.stringify(entries),
         headers: { "content-type": "application/json" }
@@ -172,6 +173,7 @@ function createEvent(event) {
         .then(function() {console.log("Created event")})
         .catch(error => console.error("Error:", error))
 
+    hideCreateEvent();
 }
 
 function signOut() {
@@ -193,6 +195,6 @@ document.getElementById("create-account-submit").addEventListener("click", newUs
 document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
 
 document.getElementById("create-event").addEventListener("click", showCreateEvent);
-document.getElementById("create-event-form").addEventListener("submit", createEvent);
+document.getElementById("create-event-form").addEventListener("formdata", createEvent);
 document.getElementById("create-event-submit").addEventListener("click", createEvent);
 document.getElementById("cancel-create-event").addEventListener("click", hideCreateEvent);
