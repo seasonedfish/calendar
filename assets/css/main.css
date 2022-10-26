@@ -14,10 +14,27 @@ header {
     justify-content: space-between;
 }
 
+#signin-popup {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    width: 30vw;
+    height: 70vh;
+    top: 10vh;
+    left: 35vw;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 15px;
+    border-color: #717cb9;
+    z-index: 1;
+    background-color: white;
+}
+
 #weekdays, #day-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-
     list-style: none;
     margin: 0;
     padding: 0;

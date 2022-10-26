@@ -106,7 +106,49 @@ function updateAll() {
     updateCalendar();
 }
 
-let viewDate = new Date();
+function showSignIn() {
+    document.getElementById("signin-popup").style.display = "flex";
+}
+
+function hideSignIn() {
+    document.getElementById("signin-popup").style.display = "none";
+}
+
+function signIn() {
+    const username = document.getElementById("username").value;
+
+    const data = { 'username': username };
+
+    fetch("php/sign_in.php", {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'content-type': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => alert(data.success ? "You've been logged in!" : `Error`))
+        .catch(err => console.error(err));
+    hideSignIn();
+}
+
+function newUser() {
+    const username = document.getElementById("new_username").value;
+
+    const data = { 'username': username };
+
+    fetch("php/create_account.php", {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'content-type': 'application/json' }
+        });
+    hideSignIn();
+}
+
+var viewDate = new Date();
 document.addEventListener("DOMContentLoaded", updateAll);
 document.getElementById("previous-month").addEventListener("click", previousMonth);
 document.getElementById("next-month").addEventListener("click", nextMonth);
+document.getElementById("sign-in").addEventListener("click", showSignIn);
+document.getElementById("cancel-signin").addEventListener("click", hideSignIn);
+document.getElementById("create-event").addEventListener("click", nextMonth);
+document.getElementById("sign-in-button").addEventListener("click", signIn);
+document.getElementById("create-account-button").addEventListener("click", newUser);

@@ -1,61 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-
-    <link rel="stylesheet" href="assets/css/main.css">
-    <style rel="stylesheet" id="day-offset">
-    #day-grid li:first-of-type {
-        grid-column-start: 2;
-    }
-    </style>
-
-    <template id="calendar-day">
-        <li>
-            <div class="day-number">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calendar</title>
+        <link rel="stylesheet" href="assets/css/main.css">
+        <style rel="stylesheet" id="day-offset">
+        #day-grid li:first-of-type {
+            grid-column-start: 2;
+        }
+        </style>
+        <template id="calendar-day">
+            <li>
+                <div class="day-number">
+                </div>
+                <ol class="events-list">
+                </ol>
+            </li>
+        </template>
+        <script type="module" src="js/main.js"></script>
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1 id="month-and-year">October 2022</h1>
+                <a id="previous-month" href="javascript:void(0)">Previous month</a>
+                <a id="next-month" href="javascript:void(0)">Next month</a>
             </div>
-            <ol class="events-list">
+            <div>
+                <nav>
+                    <ul>
+                        <li><a id="sign-in" href="javascript:void(0)">Sign in</a></li>
+                        <li><a id="create-event" href="javascript:void(0)">Create Event</a></li>
+                        <li><a id="toggle-dark-mode" href="javascript:void(0)">Toggle dark mode</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- https://css-tricks.com/snippets/css/css-grid-starter-layouts/ -->
+        <div id="calendar">
+            <ul id="weekdays">
+                <li>SUN</li>
+                <li>MON</li>
+                <li>TUE</li>
+                <li>WED</li>
+                <li>THU</li>
+                <li>FRI</li>
+                <li>SAT</li>
+            </ul>
+
+            <ol id="day-grid">
             </ol>
-        </li>
-    </template>
-
-    <script type="module" src="js/main.js"></script>
-</head>
-<body>
-    <header>
-        <div>
-            <h1 id="month-and-year">October 2022</h1>
-            <a id="previous-month" href="javascript:void(0)">Previous month</a>
-            <a id="next-month" href="javascript:void(0)">Next month</a>
         </div>
-        <div>
-            <nav>
-                <ul>
-                    <li><a id="sign-in" href="javascript:void(0)">Sign in</a></li>
-                    <li><a id="create-event" href="javascript:void(0)">Create event</a></li>
-                    <li><a id="toggle-dark-mode" href="javascript:void(0)">Toggle dark mode</a></li>
-                </ul>
-            </nav>
+        <div id="signin-popup">
+            <h3>Sign in:</h3>
+            <p>
+                <label for="username">Username: </label>
+                <input type="text" name="username" id="username">
+            </p>
+            <p>
+                <button id="sign-in-button">Log In</button>
+            </p>
+            <h3>Create Account:</h3>
+            <p>
+                <label for="new_username">New username: </label>
+                <input type="text" name="new_username" id="new_username">
+            </p>
+            <p>
+                <button id="create-account-button">Create</button>
+            </p>
+            <button id="cancel-signin" type="button">Cancel</button>
         </div>
-    </header>
-    <!-- https://css-tricks.com/snippets/css/css-grid-starter-layouts/ -->
-    <div id="calendar">
-        <ul id="weekdays">
-            <li>SUN</li>
-            <li>MON</li>
-            <li>TUE</li>
-            <li>WED</li>
-            <li>THU</li>
-            <li>FRI</li>
-            <li>SAT</li>
-        </ul>
-
-        <ol id="day-grid">
-        </ol>
-    </div>
-</body>
-
+    </body>
 </html>
