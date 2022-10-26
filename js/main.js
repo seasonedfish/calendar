@@ -196,9 +196,9 @@ function showEditEvent(evt, eventId) {
     const event = getEvent(eventId);
 
     let editEvent = document.getElementById("edit-event-popup");
-    editEvent.getElementById("edit-event-title").value = event["title"];
-    editEvent.getElementById("edit-event-datetime").value = event["datetime"];
-    editEvent.getElementById("edit-event-location").value = event["location"];
+    document.getElementById("edit-event-title").value = event["title"];
+    document.getElementById("edit-event-datetime").value = event["datetime"];
+    document.getElementById("edit-event-location").value = event["location"];
 
     editEvent.style.display = "flex";
 }
