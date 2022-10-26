@@ -231,7 +231,7 @@ function editEvent(event) {
     const entries = Object.fromEntries(formData);
     const json = {
         "event_id": entries["edit-event-event-id"],
-        "title": entries["edit-event-name"],
+        "title": entries["edit-event-title"],
         "datetime": entries["edit-event-datetime"],
         "location": entries["edit-event-location"],
     }
