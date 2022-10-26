@@ -251,7 +251,7 @@ async function showEditEvent(evt, eventId) {
         document.getElementById("google-maps").replaceChildren();
     }
     let downloadIcs = document.createElement("a");
-    downloadIcs.setAttribute("href", makeIcsFile(event));
+    downloadIcs.setAttribute("href", URL.createObjectURL(makeIcsFile(event)));
     downloadIcs.setAttribute("download", "event.ics")
     downloadIcs.innerText = "Download iCalendar file";
     document.getElementById("download-ics").replaceChildren(downloadIcs);
@@ -345,9 +345,7 @@ DTSTART:${getIcsDt(new Date(event["datetime"]))}
 END:VEVENT
 END:VCALENDAR`;
 
-    const data = new File([icsContents], "event.ics", {type: "text/calendar"});
-
-    return window.URL.createObjectURL(data);
+    return new Blob([icsContents], {type: "text/calendar"});
 }
 
 let viewDate = new Date();
