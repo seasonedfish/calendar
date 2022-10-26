@@ -169,16 +169,12 @@ function createEvent(event) {
         "datetime": entries["create-event-datetime"],
         "location": entries["create-event-location"]
     }
-    console.log(json);
 
     fetch(`${BACKEND_PREFIX}/create_event.php`, {
         method: "POST",
         body: JSON.stringify(json),
         headers: { "content-type": "application/json" }
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error("Error:", error));
+    });
 
     hideCreateEvent();
     updateAll();

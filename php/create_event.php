@@ -18,7 +18,5 @@
 
     $sql_helper = new SqlHelper();
     $query = "insert into events (title, datetime, username, location) values (?, ?, ?, ?)";
-    $result = $sql_helper->get_query_result($query, "ssss", $title, $datetime, $username, $location);
-
-    send_data_as_json($result);
+    $sql_helper->execute_query($query, "ssss", $title, $datetime, $username, $location);
 ?>
