@@ -22,7 +22,7 @@ if (isset($json_obj['event_id'])) {
         $result = $sql_helper->get_query_result($query, "i", $event_id)[0];
 
         if ($result['username'] == $username) {
-            send_data_as_json(htmlentities($result));
+            send_data_as_json($result);
         }
     }
 }

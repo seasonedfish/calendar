@@ -136,6 +136,7 @@ function updateAll() {
     updateHeader();
     updateCalendar();
     applyUserTheme();
+    setToken();
 }
 
 function showSignIn() {
@@ -159,6 +160,8 @@ function signIn() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                token = data.token;
+                console.log(token);
                 console.log("Successfully logged in");
                 hideSignIn();
                 updateAll();
@@ -347,7 +350,12 @@ END:VCALENDAR`;
     return window.URL.createObjectURL(data);
 }
 
+function setToken() {
+    
+}
+
 let viewDate = new Date();
+let token = null;
 
 document.addEventListener("DOMContentLoaded", updateAll);
 
