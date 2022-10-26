@@ -220,7 +220,7 @@ async function showEditEvent(evt, eventId) {
 }
 
 function hideEditEvent() {
-    document.getElementById("create-event-popup").style.display = "none";
+    document.getElementById("edit-event-popup").style.display = "none";
 }
 
 let viewDate = new Date();
