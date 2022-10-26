@@ -133,6 +133,7 @@ function updateCalendar() {
 }
 
 function updateAll() {
+    applyUserTheme();
     updateHeader();
     updateCalendar();
 }
@@ -276,12 +277,12 @@ function deleteEvent(evt, eventId) {
     updateAll();
 }
 
-function toggleDarkMode() {
+function applyUserTheme() {
     const root = document.querySelector(':root');
     const links = document.getElementsByTagName('a');
 
 
-    if (localStorage.getItem("isDarkMode") === "true") {
+    if (localStorage.getItem("isDarkMode") === "false") {
         root.style.setProperty('--bg', '#FFFFFF');
         root.style.setProperty('--text', '#212121');
         root.style.setProperty('--calendar-bg', '#d1d3de');
@@ -289,7 +290,6 @@ function toggleDarkMode() {
         for (let i = 0; i < links.length; i++) {
             links[i].style.color = "blue";
         }
-        localStorage.setItem("isDarkMode", "false");
     } else {
         root.style.setProperty('--bg', '#2f3740');
         root.style.setProperty('--text', '#FFFFFF');
@@ -298,8 +298,15 @@ function toggleDarkMode() {
         for (let i = 0; i < links.length; i++) {
             links[i].style.color = "#e3794f";
         }
+    }
+}
+function toggleDarkMode() {
+    if (localStorage.getItem("isDarkMode") === "true") {
+        localStorage.setItem("isDarkMode", "false");
+    } else {
         localStorage.setItem("isDarkMode", "true");
     }
+    applyUserTheme();
 }
 
 let viewDate = new Date();
