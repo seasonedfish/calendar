@@ -258,8 +258,8 @@ function editEvent(event) {
     updateAll();
 }
 
-async function deleteEvent(evt, eventId) {
-    await fetch(`${BACKEND_PREFIX}/delete_event.php"`, {
+function deleteEvent(evt, eventId) {
+    fetch(`${BACKEND_PREFIX}/delete_event.php`, {
         method: "POST",
         body: JSON.stringify({"event_id": eventId}),
         headers: JSON_HEADERS
@@ -271,12 +271,27 @@ async function deleteEvent(evt, eventId) {
 
 function toggleDarkMode() {
     const root = document.querySelector(':root');
+    const links = document.getElementsByTagName('a');
 
     if (dark) {
-        r.style.setProperty('--bg', '#FFFFFF');
+        root.style.setProperty('--bg', '#FFFFFF');
+        root.style.setProperty('--text', '#212121');
+        root.style.setProperty('--calendar-bg', '#d1d3de');
+        root.style.setProperty('--calendar-bg2', '#a3a7bd');
+        for(var i=0;i<links.length;i++)
+        {
+            links[i].style.color = "blue";
+        }
     }
     else {
-        r.style.setProperty('--bg', '#2f3740');
+        root.style.setProperty('--bg', '#2f3740');
+        root.style.setProperty('--text', '#FFFFFF');
+        root.style.setProperty('--calendar-bg', '#d1d3de');
+        root.style.setProperty('--calendar-bg2', '#496282');
+        for(var i=0;i<links.length;i++)
+        {
+            links[i].style.color = "#e3794f";
+        }
     }
     dark = !dark;
 }
