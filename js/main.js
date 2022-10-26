@@ -325,12 +325,11 @@ function toggleDarkMode() {
     applyUserTheme();
 }
 
-function getIcsDt(date) {
-    return date.toISOString()
+function getIcsDt(dateString) {
+    return dateString.replaceAll(" ", "T")
         .replaceAll("-", "")
         .replaceAll(":", "")
-        .slice(0, 15)
-        + "Z";
+        .slice(0, 15);
 }
 
 function makeIcsFile(event) {
@@ -341,7 +340,7 @@ BEGIN:VEVENT
 UID:${Date.now()}@${window.location.host}
 SUMMARY:${event["title"]}
 LOCATION:${event["location"]}
-DTSTART:${getIcsDt(new Date(event["datetime"]))}
+DTSTART;TZID=America/Chicago:${getIcsDt(event["datetime"])}
 END:VEVENT
 END:VCALENDAR`;
 
