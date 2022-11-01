@@ -1,17 +1,7 @@
 # CSE330
-Fisher Sun
-498640
-pyjamafish
+Fisher Sun / pyjamafish
 
-Harry Gao
-498711
-harrygao56
-
-Link: http://ec2-54-243-4-131.compute-1.amazonaws.com/module5-group-module5-498711-498640/
-Login info:
-- fisher
-- harry
-- You can also create new users
+Harry Gao / harrygao56
 
 Creative Portion Description:
 - We implemented a feature that allows the user to toggle between dark and light mode.
