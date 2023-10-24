@@ -1,7 +1,7 @@
 # CSE330 Calendar Website
-Fisher Sun / seasonedfish
+This repo contains Harry's and my implementation of CSE 330 module 5, a Google Calendar-like website. It was created fall 2022.
 
-Harry Gao / harrygao56
+Fisher Sun / seasonedfish, Harry Gao / harrygao56
 
 ## Creative Portion
 - We implemented a feature that allows the user to toggle between dark and light mode.
