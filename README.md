@@ -1,9 +1,9 @@
-# CSE330
-Fisher Sun / pyjamafish
+# CSE330 Calendar Website
+Fisher Sun / seasonedfish
 
 Harry Gao / harrygao56
 
-Creative Portion Description:
+## Creative Portion:
 - We implemented a feature that allows the user to toggle between dark and light mode.
   - To do this, we added CSS root variables to set to colors for all the elements, and we added functionality in the JavaScript to manipulate the DOM and change the color scheme.
   - The user's color scheme is saved in local storage, so that when they reopen the page, the color scheme is remembered.
